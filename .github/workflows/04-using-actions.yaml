@@ -9,5 +9,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Printing Folder
-        run: ls -la
+      - name: SetUp Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.x"
+      - name: Install Dependencies
+        run: npm ci
