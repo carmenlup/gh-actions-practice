@@ -42,3 +42,31 @@ Context is a way to access info about workflow runs, variables, runner environme
 Expression syntax: ${{ context }}
 Context types:
 [Official documentation](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#github-context)
+
+## 03 - Workflow runners
+
+### Theory:
+
+Runners are virtual servers the execute jobs from workflows
+Runner types:
+
+1. GitHub-hosted
+2. Self-hosted
+   Remark: To see what is virtual machine set-up on GitHub-hosted got to Actions tab -> Workflow -> Set up job -> Expand Runner Image -> follow the link Included Software
+
+#### Access Environment variables
+
+GitHub has multiple environment variables that can be accessed wit $VAR_NAME
+environment vars are uppercase only
+Remark: On windows environment variable are not accesble because of sintax. The shell property must be specified in order to print the value.
+
+## 04 - Third party actions
+
+Actions:
+
+1. sell script commands -> run: property -> thiss runs shell commands
+2. Actions -> uses: property -> this are actions that can be used
+   Advantages:
+
+- shell cocmmands or other commands are enccapsulated in action and is not need to repete them
+- we can create our own custom comands
