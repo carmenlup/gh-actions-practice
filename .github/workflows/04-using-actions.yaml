@@ -3,6 +3,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 04-using-actions/my-vite-react-app
     # 0 checkout code
     # 1 install dependencies
     # 2 run tests
@@ -15,4 +18,5 @@ jobs:
           node-version: "20.x"
       - name: Install Dependencies
         run: npm ci
-        working-directory: 02-using-actions/my-vite-react-app
+      - name: Run Tests
+        run: npm run test
