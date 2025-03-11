@@ -18,7 +18,7 @@ jobs:
           echo "SHA: $GITHUB_SHA / ${{ github.sha }}"
           echo "Run OS: $GITHUB_ACTOR / ${{ runner.os }}"
       - name: "[debug] Print when trigger"
-        if: ${{ inputs.debug && github.ref == 'main'}}
+        if: ${{ inputs.debug && github.ref == 'refs/heads/main'}}
         run: echo "This is a debug run on the main branch"
       - name: Greeting
         run: echo "Hello, world!"
