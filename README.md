@@ -56,7 +56,7 @@ Runner types:
 
 #### Access Environment variables
 
-GitHub has multiple environment variables that can be accessed wit $VAR_NAME
+GitHub has multiple environment variables that can be accessed with $VAR_NAME
 environment vars are uppercase only
 Remark: On windows environment variable are not accesble because of sintax. The shell property must be specified in order to print the value.
 
@@ -70,3 +70,18 @@ Actions:
 
 - shell cocmmands or other commands are enccapsulated in action and is not need to repete them
 - we can create our own custom comands
+
+## 06 - Using context
+
+GitHub provides context that have multiple info that can be used in workflow
+Remark: to use context at the workflow level, for example input context, first must be defined for use it. Example form workflow shows how name of the workflow can be customised at runtime.
+
+important contexts:
+
+- github
+- input
+- env
+
+#### Environment variables
+
+We can define environment variables using env context

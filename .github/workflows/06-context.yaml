@@ -7,10 +7,15 @@ on:
       debug:
         type: boolean
         default: false
-
+env:
+  MY_WORKFLOW_VAR: "workflow"
+  MY_OVERWRITEN_VAR: "workflow"
 jobs:
   echo-data:
     runs-on: ubuntu-latest
+    env:
+      MY_JOB_VAR: "job"
+      MY_OVERWRITEN_VAR: "job"
     steps:
       - name: Show the context
         run: |
@@ -25,3 +30,10 @@ jobs:
           echo "Run Number: $GITHUB_RUN_NUMBER / ${{ github.run_number }}"
       - name: Retreive variable
         run: echo "The value of the variable is ${{ vars.MY_VAR }}"
+      - name: Print Environment Valiables
+        run: |
+          echo "Workflow: ${{ env.MY_WORKFLOW_VAR }}"
+          echo "Job: ${{ env.MY_JOB_VAR }}" 
+          echo "Overwritten: ${{ env.MY_OVERWRITEN_VAR }}"
+          echo "Job test1: $MY_JOB_VAR"
+          echo "Overwritten test2: $MY_OVERWRITEN_VAR"
