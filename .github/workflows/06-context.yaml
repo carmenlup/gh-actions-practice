@@ -1,5 +1,5 @@
 name: 06 - Context
-run-name: 06 - Context | DEBUG ${{ github.event_name }}
+run-name: 06 - Context | DEBUG ${{ inputs.debug }}
 on:
   push:
   workflow_dispatch:
