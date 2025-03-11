@@ -85,3 +85,9 @@ important contexts:
 #### Environment variables
 
 We can define environment variables using env context
+
+## 07 Expressions and variables
+
+Espressins are used to conditionaly run steps or commands in workflow.
+Syntax: ${{ expression}}
+Remark: ${{}} is optional in expressions
