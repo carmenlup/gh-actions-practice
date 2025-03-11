@@ -31,6 +31,8 @@ jobs:
       - name: Retreive variable
         run: echo "The value of the variable is ${{ vars.MY_VAR }}"
       - name: Print Environment Valiables
+        env:
+          MY_OVERWRITEN_VAR: "step"
         run: |
           echo "Workflow: ${{ env.MY_WORKFLOW_VAR }}"
           echo "Job: ${{ env.MY_JOB_VAR }}" 
