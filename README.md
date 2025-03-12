@@ -93,3 +93,5 @@ Syntax: ${{ expression}}
 Remark: ${{}} is optional in expressions
 
 [![Status Badge](https://img.shields.io/badge/status-badge-new)](https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-badge.yml/dispatches)
+
+Update
