@@ -91,5 +91,4 @@ We can define environment variables using env context
 Espressins are used to conditionaly run steps or commands in workflow.
 Syntax: ${{ expression}}
 Remark: ${{}} is optional in expressions
-
-[![Status Badge](https://img.shields.io/badge/status-badge-new)](https://github.com/OWNER/REPO/actions/workflows/update-badge.yml/dispatches)
+[![Status Badge](https://img.shields.io/badge/status-badge-new)](https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/workflows/update-badge.yml/dispatches)
