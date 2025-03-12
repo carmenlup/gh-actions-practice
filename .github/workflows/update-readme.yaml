@@ -1,24 +1,29 @@
 name: Update Badge
+
 on:
   push:
-  repository_dispatch:
-    types: [update_badge]
+    branches:
+      - main
 
 jobs:
   update-badge:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Update Badge in README.md
+      - name: Update badge
         run: |
-          sed -i 's/status-badge-new/status-badge-voted/' README.md
-
-      - name: Commit Changes
-        run: |
-          git config --global user.name "$(git log -1 --pretty=format:'%an')"
-          git config --global user.email "$(git log -1 --pretty=format:'%ae')"
+          # Your script to update the badge
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m 'Update status badge to voted'
-          git push
+          git commit -m "Update status badge"
+
+      - name: Push changes
+        env:
+          ACTIONS_PAT: ${{ secrets.ACTIONS_PAT }}
+        run: |
+          git remote set-url origin https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}
+          git push origin HEAD:main
