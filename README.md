@@ -92,4 +92,4 @@ Espressins are used to conditionaly run steps or commands in workflow.
 Syntax: ${{ expression}}
 Remark: ${{}} is optional in expressions
 
-[![Status Badge](https://img.shields.io/badge/status-badge-new)](<[https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-readme.yaml]([https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-readme.yaml)/dispatches>)
+[![Status Badge](https://img.shields.io/badge/status-badge-new)](https://github.com/OWNER/REPO/actions/workflows/update-badge.yml/dispatches)
