@@ -22,3 +22,8 @@ jobs:
         run: echo "This is a debug run on the main branch"
       - name: Greeting
         run: echo "Hello, world!"
+# how can I update an md file through pipelines?
+# I have an md file with a status badge new and when
+# I press a vote button in the md file I want to chance the badge to voted
+# I want to do this through pipelines
+
