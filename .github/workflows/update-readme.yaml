@@ -28,5 +28,9 @@ jobs:
         env:
           ACTIONS_PAT: ${{ secrets.ACTIONS_PAT }}
         run: |
+          if [ -z "${{ secrets.ACTIONS_PAT }}" ]; then
+            echo "ACTIONS_PAT is not set. Make sure you have created a Personal Access Token with repo permissions and added it to the secrets."
+            exit 1
+          fi
           git remote set-url origin https://x-access-token:${ACTIONS_PAT}@github.com/${{ github.repository }}
           git push origin HEAD:main
