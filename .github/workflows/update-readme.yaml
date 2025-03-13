@@ -16,12 +16,12 @@ jobs:
       - name: Update badge
         run: |
           # Your script to update the badge
-          # Ensure this script modifies README.md
+          # Ensure this script modifies ADRApproval.md
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Example modification to README.md
-          echo "Updated badge status" >> README.md
-          git add README.md
+          # Example modification to ADRApproval.md
+          echo "Updated badge status" >> ADRApproval.md
+          git add ADRApproval.md
           git commit -m "Update status badge"
 
       - name: Push changes
