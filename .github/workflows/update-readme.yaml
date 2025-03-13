@@ -1,9 +1,8 @@
 name: Update Badge
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types: [update_badge]
 
 jobs:
   update-badge:
@@ -15,18 +14,13 @@ jobs:
 
       - name: Update badge
         run: |
-          # Your script to update the badge
-          # Ensure this script modifies ADRApproval.md
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Example modification to ADRApproval.md
-          # find text "status: new" and replace with "status: voted" in ADRApproval.md
-          # also chenge the badge to voted green color
-          sed -i 's/status: new/status: voted/g' ADRApproval.md
-          sed -i 's/red/green/g' ADRApproval.md
-          # echo "Updated badge status" >> ADRApproval.md
+          # Replace the badge in ADRApproval.md
+          sed -i 's|<img alt="Grey Tick" src="https://img.shields.io/badge/status-new-lightgrey">|<img alt="Green Tick" src="https://img.shields.io/badge/status-approved-brightgreen">|g' ADRApproval.md
           git add ADRApproval.md
-          git commit -m "Update status badge"
+          git commit -m "Update status badge to approved"
+          git push origin HEAD:main
 
       - name: Push changes
         env:
