@@ -20,7 +20,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           # Example modification to ADRApproval.md
-          echo "Updated badge status" >> ADRApproval.md
+          # find text "status: new" and replace with "status: voted" in ADRApproval.md
+          # also chenge the badge to voted green color
+          sed -i 's/status: new/status: voted/g' ADRApproval.md
+          sed -i 's/red/green/g' ADRApproval.md
+          # echo "Updated badge status" >> ADRApproval.md
           git add ADRApproval.md
           git commit -m "Update status badge"
 
