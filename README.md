@@ -1,7 +1,7 @@
 # staus badge example
-![example workflow](https://github.com/github/docs/actions/workflows/artifacts-learning.yml/badge.svg)
+![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/artifacts-learning.yml/badge.svg)
 
-![example workflow](https://github.com/github/docs/actions/workflows/update-readme.yml/badge.svg)
+![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-readme.yaml/badge.svg)
 
 Repository contains all example and notes to practice github actions
 
