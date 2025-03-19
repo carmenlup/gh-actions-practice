@@ -1,7 +1,7 @@
 name: Update Badge
 
 on:
-  push:
+ # push:
   repository_dispatch:
     types: [update_badge]
 
