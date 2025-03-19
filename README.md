@@ -1,3 +1,8 @@
+# staus badge example
+![example workflow](https://github.com/github/docs/actions/workflows/artifacts-learning.yml/badge.svg)
+
+![example workflow](https://github.com/github/docs/actions/workflows/update-readme.yml/badge.svg)
+
 Repository contains all example and notes to practice github actions
 
 ## 01 - fail / success workflows
