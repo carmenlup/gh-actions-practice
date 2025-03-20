@@ -18,7 +18,7 @@ jobs:
           STEP_VAR: "I am step env variable"
           STEP_VAR2: "I am another step env variable"
         run: |
-          echo "Step env variable: ${{ env.STEP_VAR }}
+          echo "Step env variable: ${{ env.STEP_VAR }}"
           echo "Step env variable 2: $STEP_VAR2"
           echo "Job env variable: $JOB_VAR"
           echo "Workflow env variable: $WORFLOW_VAR"
@@ -27,7 +27,7 @@ jobs:
         env:
           OVERITTEN: "I have been overitten at the step level"
         run: |
-          echo 'Step env variable: $OVERITTEN'
+          echo "Step env variable: $OVERITTEN"
   echo2:
     runs-on: ubuntu-latest
     steps:
@@ -46,4 +46,4 @@ jobs:
     steps:
       - name: Print Undefined
         run: |
-          echo "Undefined var: $UNDEFINED_VAR"
+          echo "Undefined var: $UNDEFINED_VAR_WITH_DEFAULT"
