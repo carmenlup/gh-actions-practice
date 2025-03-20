@@ -1,4 +1,5 @@
 # staus badge example
+
 ![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/artifacts-learning.yml/badge.svg)
 
 ![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-readme.yaml/badge.svg)
@@ -101,3 +102,52 @@ Remark: ${{}} is optional in expressions
 
 Update
 Updated badge status
+
+## 08 Environment variables
+
+Are used to ser and reuse non-sensitive configuration info
+Way to define
+
+1. Single workflow
+
+   Can be defined at the next levels in order of their precedence:
+
+   - workflow
+   - job
+   - steps
+
+2. Multiple workflows
+
+   Can be defined at the next levels in order of their precedence:
+
+   - Organization
+   - Repository
+   - Environment
+
+#### Env variables can be access using
+
+- $
+- env context
+
+#### Env variable name constraints
+
+Can contain char [a-z], [A-Z], [0-9] and \_
+
+- not start with GITHUB\_ prefix
+- not start with a number
+- no space
+- are case sensitive
+- must be unique to the repo, organization or enterprise where they are defined
+
+#### Other constraints
+
+- size: 48 KB
+- number
+  - 1000 - organization
+  - 500 - repository
+  - 100 - environment
+- size per workflow: 256 KB
+  Remark: if constraints exceed only vars below limit are accessible in alphabetical order
+
+Remark on variables:
+Default environment variables are defined by GitHub and are accessible via github context (not env context)
