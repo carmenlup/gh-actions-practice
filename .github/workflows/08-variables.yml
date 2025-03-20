@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
 env:
   WORFLOW_VAR: "I am workflow env variable"
-  OVERRITEN: I will be overriten'
+  OVERITTEN: I will be overitten'
 jobs:
   echo:
     runs-on: ubuntu-latest
     env:
       JOB_VAR: "I am job env variable"
-      OVERRITEN: "I have been overriten at the job level"
+      OVERITTEN: "I have been overritten at the job level"
     steps:
       - name: Print Env Valiables
         env:
@@ -21,9 +21,9 @@ jobs:
           echo "Step env variable 2: $STEP_VAR2"
           echo "Job env variable: $JOB_VAR"
           echo "Workflow env variable: $WORFLOW_VAR"
-          echo "Overriten variable: $OVERRITEN"
+          echo "Overitten variable: $OVERITTEN"
       - name: Overwrite Variable
         env:
-          OVERRITEN: "I have been overriten at the step level"
+          OVERITTEN: "I have been overitten at the step level"
         run: |
-          echo 'Step env variable: $OVERRITEN'
+          echo 'Step env variable: $OVERITTEN'

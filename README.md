@@ -1,9 +1,3 @@
-# stauts badge example
-
-![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/artifacts-learning.yml/badge.svg)
-
-![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-readme.yaml/badge.svg)
-
 Repository contains all example and notes to practice GitHub actions
 
 ## 01 - fail / success workflows
@@ -81,13 +75,13 @@ Actions:
 2. Actions -> uses: property -> this are actions that can be used
    Advantages:
 
-- shell commands or other commands are enccapsulated in action and is not need to repet them
+- shell commands or other commands are encapsulated in action and is not need to repeat them
 - we can create our own custom commands
 
 ## 06 - Using context
 
 GitHub provides context that have multiple info that can be used in workflow
-Remark: to use context at the workflow level, for example input context, first must be defined for use it. Example form workflow shows how name of the workflow can be customised at runtime.
+**Remark:** to use context at the workflow level, for example input context, first must be defined for use it. Example form workflow shows how name of the workflow can be customized at runtime.
 
 Important contexts:
 
@@ -105,10 +99,11 @@ Expressions are used to conditionally run steps or commands in workflow.
 Syntax: ${{ expression}}
 Remark: ${{}} is optional in expressions
 
-[![Status Badge](https://img.shields.io/badge/status-badge-new)](https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-badge.yml/dispatches)
+# status badge example
 
-Update
-Updated badge status
+![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/artifacts-learning.yml/badge.svg)
+
+![example workflow](https://github.com/carmenlup/gh-actions-practice/actions/workflows/update-readme.yaml/badge.svg)
 
 ## 08 Environment variables
 
