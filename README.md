@@ -56,14 +56,16 @@ Runner types:
 1. GitHub-hosted
 2. Self-hosted
 
-**Remark:** To see what is virtual machine set-up on GitHub-hosted got to Actions tab -> Workflow -> Set up job -> Expand Runner Image -> follow the link Included Software
+$\color{green}{Remark:}$
+To see what is virtual machine set-up on GitHub-hosted got to Actions tab -> Workflow -> Set up job -> Expand Runner Image -> follow the link Included Software
 
 #### Access Environment variables
 
 GitHub has multiple environment variables that can be accessed with $VAR_NAME
 environment vars are uppercase only
 
-**Remark:** On windows environment variable are not accessible because of syntax. The shell property must be specified in order to print the value. Still is accessible using env context
+$\color{green}{Remark:}$
+On windows environment variable are not accessible because of syntax. The shell property must be specified in order to print the value. Still is accessible using env context
 
 ![Access env var using dollar sign](<Images/Screenshot 2025-03-20 074328.jpg>)
 
@@ -81,7 +83,9 @@ Actions:
 ## 06 - Using context
 
 GitHub provides context that have multiple info that can be used in workflow
-**Remark:** to use context at the workflow level, for example input context, first must be defined for use it. Example form workflow shows how name of the workflow can be customized at runtime.
+
+$\color{green}{Remark:}$
+To use context at the workflow level, for example input context, first must be defined for use it. Example form workflow shows how name of the workflow can be customized at runtime.
 
 Important contexts:
 
@@ -97,7 +101,9 @@ We can define environment variables using env context
 
 Expressions are used to conditionally run steps or commands in workflow.
 Syntax: ${{ expression}}
-Remark: ${{}} is optional in expressions
+
+$\color{green}{Remark:}$
+${{}} is optional in expressions
 
 # status badge example
 
@@ -149,7 +155,9 @@ Can contain char [a-z], [A-Z], [0-9] and \_
   - 500 - repository
   - 100 - environment
 - size per workflow: 256 KB
-  Remark: if constraints exceed only vars below limit are accessible in alphabetical order
 
-Remark on variables:
+$\color{green}{Remark:}$
+If constraints exceed only vars below limit are accessible in alphabetical order
+
+$\color{green}{Remark on variables:}$
 Default environment variables are defined by GitHub and are accessible via github context (not env context)
