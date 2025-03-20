@@ -1,5 +1,5 @@
 name: Share data between jobs
-on: push
+on: workflow_dispatch
 jobs:
   job_1:
     name: Upload File

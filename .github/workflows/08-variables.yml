@@ -7,7 +7,7 @@ env:
   OVERRITEN: I will be overriten'
 jobs:
   echo:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, windows-latest]
     env:
       JOB_VAR: "I am job env variable"
       OVERRITEN: "I have been overriten at the job level"
@@ -19,8 +19,8 @@ jobs:
         run: |
           echo 'Step env variable: ${{ env.STEP_VAR }}'
           echo "Step env variable 2: $STEP_VAR2"
-          echo 'Job env variable: $JOB_VAR'
-          echo 'Workflow env variable: $WORFLOW_VAR'
+          echo "Job env variable: $JOB_VAR"
+          echo "Workflow env variable: $WORFLOW_VAR"
           echo 'Overriten variable: $OVERRITEN'
       - name: Overwrite Variable
         env:
