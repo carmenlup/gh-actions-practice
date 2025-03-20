@@ -1,13 +1,13 @@
 name: 08 - Using Variables
 on:
-  push:
+  #push:
   workflow_dispatch:
 env:
   WORFLOW_VAR: "I am workflow env variable"
   OVERRITEN: I will be overriten'
 jobs:
   echo:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       JOB_VAR: "I am job env variable"
       OVERRITEN: "I have been overriten at the job level"
@@ -17,11 +17,11 @@ jobs:
           STEP_VAR: "I am step env variable"
           STEP_VAR2: "I am another step env variable"
         run: |
-          echo 'Step env variable: ${{ env.STEP_VAR }}'
+          echo "Step env variable: ${{ env.STEP_VAR }}
           echo "Step env variable 2: $STEP_VAR2"
           echo "Job env variable: $JOB_VAR"
           echo "Workflow env variable: $WORFLOW_VAR"
-          echo 'Overriten variable: $OVERRITEN'
+          echo "Overriten variable: $OVERRITEN"
       - name: Overwrite Variable
         env:
           OVERRITEN: "I have been overriten at the step level"
