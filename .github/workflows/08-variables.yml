@@ -18,7 +18,7 @@ jobs:
           STEP_VAR2: "I am another step env variable"
         run: |
           echo 'Step env variable: ${{ env.STEP_VAR }}'
-          echo 'Step env variable 2: $STEP_VAR2'
+          echo "Step env variable 2: $STEP_VAR2"
           echo 'Job env variable: $JOB_VAR'
           echo 'Workflow env variable: $WORFLOW_VAR'
           echo 'Overriten variable: $OVERRITEN'
