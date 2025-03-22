@@ -7,9 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Failing step
-        run: |
-          echo "This is a failing step"
-          exit 1
+        run: exit 1
       - name: I will be skipped
         if: ${{ success() }}
         run: echo "I will print if preview step succeeds"
