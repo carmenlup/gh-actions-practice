@@ -17,12 +17,12 @@ on:
         description: Release from which to build and deploy
 jobs:
   build:
-    runs-on: umbutu-latest
+    runs-on: windows-latest
     steps:
       - name: Build
         run: echo "Building from tag ${{ inputs.tag }}"
   deploy:
-    runs-on: umbutu-latest
+    runs-on: windows-latest
     needs: build
     if: ${{ !inputs.dry-run }}
     environment: ${{ inputs.target }}
