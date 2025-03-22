@@ -10,13 +10,13 @@ jobs:
         run: exit 1
       - name: I will be skipped
         if: ${{ success() }}
-        run: echo "I will print if preview step succeeds"
+        run: echo "I will print if previous step succeeds"
       - name: I will execute
         if: ${{ failure() }}
-        run: echo "I will print if any preview step fails"
-      - name: I will execite
+        run: echo "I will print if any previeous step fails"
+      - name: I will execute
         if: ${{ !cancelled() }}
-        run: echo "I will always print, exccept when workflow is cancceled"
-      - name: I will execute when canceled
+        run: echo "I will always print, exccept when workflow is cancelled"
+      - name: I will execute when cancelled
         if: ${{ cancelled() }}
-        run: echo "I will print if the workflow is canceled"
+        run: echo "I will print if the workflow is cancelled"
