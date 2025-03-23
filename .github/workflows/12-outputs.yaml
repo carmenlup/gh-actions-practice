@@ -22,7 +22,7 @@ jobs:
   deploy:
     runs-on: unbutu-latest
     needs: build
-    if: ${{ needs.build.outputs.status == 'success' }}
+    if: ${{ needs.build.outputs.build-status == 'success' }}
     steps:
       - name: Deploy
         run: echo "Deploying"
