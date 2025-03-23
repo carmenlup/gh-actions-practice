@@ -1,0 +1,54 @@
+name: 13 - Using Caching
+
+on:
+  workflow_dispatch:
+    inputs:
+      use-cache:
+        type: boolean
+        description: Whether to execute cache step
+        default: true
+      node-version:
+        type: choice
+        options: ["18.x", "20.x", "21.x"]
+        description: Node.js version to use
+        default: "20.x"
+
+jobs:
+  build:
+    runs-on: unbutu-latest
+    defaults:
+      run:
+        working-directory: 13-caching/reach-app
+    steps:
+      #1. checkout the code - done checkout and setup steps
+      #2. Install dependencies - done
+      #3. Run tests - done
+      #4. Build the app - done
+      #5. Deploy to non-prod
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        if: ${{ inputs.use-cache }}
+        id: cache
+        with:
+          path: 13-caching/react-app/node_modules
+          key: deps-node-module-${{ hashFiles('13-caching/react-app/package-lock.json') }}
+          #key: ${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Testing
+        run: npm run test
+      - name: Build
+        run: npm run build
+      - name: Deploy to nonptod
+        run: echo "Deploying to non-prod"
+      #- name: Cache node_modules
+      # if: ${{ inputs.use-cache }}
+      # uses: actions/cache@v2
+      # with:
