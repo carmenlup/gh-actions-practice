@@ -25,15 +25,19 @@ jobs:
           echo "output1=value1" >> "$GITHUB_OUTPUT"
           echo "output2=value2" >> "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
+      - name: Step with mistake
+        run: |
           echo "mistake=true" > "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
   deploy:
     runs-on: unbutu-latest
     needs: build
-    if: ${{ needs.build.outputs.build-status == 'success' }}
+    # if: ${{ needs.build.outputs.build-status == 'success' }}
     steps:
       - name: Deploy
-        run: echo "Deploying"
+        run: |
+          echo "Deploying"
+          echo "Build status: ${{ needs.build.outputs.build-status }}"
       - name: Print output1
         run: |
           echo "Output 1:${{ needs.build.outputs.output1 }}"
