@@ -3,7 +3,7 @@ name: 12 - Working with outputs
 on:
   workflow_dispatch:
     inputs:
-      build-status:
+      build-status-in:
         type: choice
         options: ["success", "failure"]
         default: "success"
@@ -22,7 +22,7 @@ jobs:
         id: build
         run: |
           echo "$GITHUB_OUTPUT"
-          echo "status=${{ inputs.build-status }}" > "$GITHUB_OUTPUT"
+          echo "status=${{ inputs.build-status-in }}" > "$GITHUB_OUTPUT"
           echo "output1=value1" >> "$GITHUB_OUTPUT"
           echo "output2=value2" >> "$GITHUB_OUTPUT"
   deploy:
