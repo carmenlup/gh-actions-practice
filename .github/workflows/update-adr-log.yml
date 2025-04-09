@@ -24,7 +24,7 @@ jobs:
         run: |
           git config --global user.name "Carmen Lup"
           git config --global user.email "carmen.gabriela.lp@gmail.comm"
-          adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e ${{ github.workspace }}/adr/template.md
+          adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e template.md
           git add index.md
           git commit -m "Update ADR log"
           git pull --rebase origin main
