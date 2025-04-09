@@ -22,6 +22,8 @@ jobs:
 
       - name: Update ADR log
         run: |
+          git config --global user.name "Carmen Lup"
+          git config --global user.email "carmen.gabriela.lp@gmail.comm"
           adr-log -d adr -i ./index.md -e template.md
           git add index.md
           git commit -m "Update ADR log"
