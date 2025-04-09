@@ -1,0 +1,28 @@
+name: Update ADR Log
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-adr-log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Use the desired Node.js version
+
+      - name: Install adr-log globally
+        run: npm install -g adr-log
+
+      - name: Update ADR log
+        run: |
+          adr-log -d adr -i ./index.md -e template.md
+          git add index.md
+          git commit -m "Update ADR log"
+          git push origin main

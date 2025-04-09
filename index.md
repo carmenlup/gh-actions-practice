@@ -1,9 +1,5 @@
-
-
 <!-- adrlog -->
 
 
 
 <!-- adrlogstop -->
-
-
