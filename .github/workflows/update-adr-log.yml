@@ -39,6 +39,7 @@ jobs:
               break
             fi
           done
+          echo "status: ${{ env.status }}"
 
       - name: Update ADR log
         if: env.status == 'approved' || env.status == 'deprecated'
