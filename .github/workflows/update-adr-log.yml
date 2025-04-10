@@ -2,7 +2,7 @@ name: Update ADR Log
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -20,11 +20,22 @@ jobs:
       - name: Install adr-log globally
         run: npm install -g adr-log
 
+      - name: Check if status is approved
+        id: check-status
+        run: |
+          if grep -q '**Status:** ✅ <font color="green">Approved</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
+            echo "status=approved" >> $GITHUB_ENV
+          else if grep -q '**Status:** ❗<font color="red">Deprecated</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
+            echo "status=approved" >> $GITHUB_ENV
+          else
+            echo "status=not-approved" >> $GITHUB_ENV
+
       - name: Update ADR log
+        if: env.status == 'approved' || env.status == 'deprecated' 
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e template.md
+          adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e '[[]*[]].md'
           git add index.md
           git commit -m "Update ADR log"
-          git push origin main
+          git push origin master
