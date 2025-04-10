@@ -1,0 +1,1 @@
+-> **Title:** New ADR Title 111 <br/> **Status:** ✍️ <font color="orange">Proposed </font><br/> **Date:** 10-Apr-2025
