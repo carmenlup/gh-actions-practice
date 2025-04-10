@@ -39,10 +39,10 @@ jobs:
               break
             fi
           done
-          echo "status: ${{ env.STATUS }}"
+          echo "::set-output name=status::$status"
 
       - name: Update ADR log
-        if: env.status == 'approved' || env.status == 'deprecated'
+        if: steps.check-status.outputs.status == 'approved' || steps.check-status.outputs.status == 'deprecated'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
