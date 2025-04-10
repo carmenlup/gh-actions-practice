@@ -1,0 +1,1 @@
+-> **Title:** New ADR Title 222 <br/> ✅ <font color="green">Accepted </font> <br/> **Date:** 11-Apr-2025
