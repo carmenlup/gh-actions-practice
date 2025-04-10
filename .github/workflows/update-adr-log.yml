@@ -44,7 +44,7 @@ jobs:
           fi
 
       - name: Update ADR log
-        if: env.status == 'approved' || env.status == 'deprecated'
+        if: env.status != 'not-approved'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
