@@ -38,10 +38,6 @@ jobs:
               echo "status=deprecated" >> $GITHUB_ENV
               break
             fi
-          done
-          if [ -z "$CHANGED_FILES" ]; then
-            echo "status=not-approved" >> $GITHUB_ENV
-          fi
 
       - name: Update ADR log
         if: env.status == 'approved' || env.status == 'deprecated'
