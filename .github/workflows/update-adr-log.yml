@@ -20,19 +20,26 @@ jobs:
       - name: Install adr-log globally
         run: npm install -g adr-log
 
-      - name: Check if status is approved
+      - name: Check if any ADR file is approved
         id: check-status
         run: |
-          if grep -q '**Status:** ✅ <font color="green">Approved</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
-            echo "status=approved" >> $GITHUB_ENV
-          elif grep -q '**Status:** ❗<font color="red">Deprecated</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
-            echo "status=approved" >> $GITHUB_ENV
-          else
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '^adr/.*\.md$')
+          echo "Changed files: $CHANGED_FILES"
+          for FILE in $CHANGED_FILES; do
+            if grep -q '**Status:** ✅ <font color="green">Approved</font>' "$FILE"; then
+              echo "status=approved" >> $GITHUB_ENV
+              break
+            elif grep -q '**Status:** ❗<font color="red">Deprecated</font>' "$FILE"; then
+              echo "status=deprecated" >> $GITHUB_ENV
+              break
+            fi
+          done
+          if [ -z "$CHANGED_FILES" ]; then
             echo "status=not-approved" >> $GITHUB_ENV
           fi
 
       - name: Update ADR log
-        if: env.status == 'approved' || env.status == 'deprecated' 
+        if: env.status == 'approved' || env.status == 'deprecated'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
