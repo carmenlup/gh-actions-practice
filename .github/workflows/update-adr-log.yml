@@ -38,6 +38,7 @@ jobs:
               echo "status=deprecated" >> $GITHUB_ENV
               break
             fi
+          done
 
       - name: Update ADR log
         if: env.status == 'approved' || env.status == 'deprecated'
