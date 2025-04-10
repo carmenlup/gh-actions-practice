@@ -29,6 +29,7 @@ jobs:
             echo "status=approved" >> $GITHUB_ENV
           else
             echo "status=not-approved" >> $GITHUB_ENV
+          fi
 
       - name: Update ADR log
         if: env.status == 'approved' || env.status == 'deprecated' 
