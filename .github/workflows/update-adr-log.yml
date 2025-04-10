@@ -25,7 +25,7 @@ jobs:
         run: |
           if grep -q '**Status:** ✅ <font color="green">Approved</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
             echo "status=approved" >> $GITHUB_ENV
-          elseif grep -q '**Status:** ❗<font color="red">Deprecated</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
+          elif grep -q '**Status:** ❗<font color="red">Deprecated</font>' ${{ github.workspace }}/adr/0001-new-adr-placeholder.md; then
             echo "status=approved" >> $GITHUB_ENV
           else
             echo "status=not-approved" >> $GITHUB_ENV
