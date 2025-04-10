@@ -38,5 +38,4 @@ jobs:
           adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e '[[]*[]].md'
           git add index.md
           git commit -m "Update ADR log"
-          git pull --rebase origin main # Pull remote changes before pushing
           git push origin master
