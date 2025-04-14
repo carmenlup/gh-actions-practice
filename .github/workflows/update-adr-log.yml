@@ -1,8 +1,5 @@
 name: Update ADR Log
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
