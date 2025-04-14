@@ -7,50 +7,28 @@ on:
   workflow_dispatch:
 
 jobs:
-    update-adr-log:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
+  update-adr-log:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-        - name: Copy content between comments from all Markdown files in adr folder to index.md
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            
-            > index.md
+      # Step 2: Set up the environment (if needed)
+      - name: Set up environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y grep sed
 
-            # Create a temporary file to store filenames and their dates
-            temp_file=$(mktemp)
+      # Step 3: Execute the bash script
+      - name: Run update-adr-log script
+        run: .github/scripts/update-adr-log.sh
 
-            # Extract the date from each file and store it with the filename
-            for file in adr/*.md; do
-              # Extract the date from the file (assuming the date is in the format `**Date:** DD-MMM-YYYY`)
-              date=$(grep -oP '(?<=\*\*Date:\*\* ).*' "$file" | head -n 1)
-              echo "$date|$file" >> "$temp_file"
-            done
-
-            # Sort the files by date (ascending order)
-            sorted_files=$(sort -t '|' -k1 -r "$temp_file")
-
-            # Process the files in sorted order
-            echo "$sorted_files" | while IFS='|' read -r date file; do
-            # Extract the ADR number (first 4 characters of the filename)
-            adr_number=$(basename "$file" .md | cut -c1-4)
-
-            # Generate the relative file path for the link
-            file_link=$(basename "$file")
-
-            # Extract content between <!-- start --> and <!-- end -->, prepend ADR number as a link, and append to index.md
-            sed -n '/<!-- log start -->/,/<!-- log end -->/p' "$file" | sed "2s/^/- [ADR-$adr_number](adr\/$file_link) - /" | sed '/<!-- log start -->/d; /<!-- log end -->/d' >> index.md
-
-            # Delete content between <!-- start --> and <!-- end --> (inclusive) in the original file
-            sed -i '/<!-- log start -->/,/<!-- log end -->/d' "$file"
-            done
-
-            # Clean up the temporary file
-            rm "$temp_file"
-
-            git add index.md
-            git commit -m "Update ADR log"
-            git push origin main
+      # Step 4: Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.md
+          git commit -m "Update ADR log"
+          git push origin main
