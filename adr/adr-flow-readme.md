@@ -4,7 +4,7 @@ This documentation explain the adr lifecycle and represents the guide for owners
 
 ### adr Folder structure
 
-In assurance-helix-archkm repository **adr** is the main folder where all ADRs will be added and maintained
+In this repository **adr** is the main folder where all ADRs will be added and maintained
 Folder structure for ADR's and important files:
 - template.md - Template md file to follow to create ADR. Each ADR will created by copy and edit the template
 - add-flow-readme.md - current documentation of adr flow. This file must updated in case flow will change.
@@ -12,7 +12,7 @@ Folder structure for ADR's and important files:
    - new folder will be created under adr folder only
    - naming convention for folders: small letters delimited by -
    - suggestive folder name that address the adr based on modules
-     **Example:** common-components, mapping-module, platform etc
+     **Example:** user-management, raiting-module, logs etc
    - in case adr contains images linked the images folder will be created and will have all images linked in ADR    
      **Example**: ![Image Linked in adr](images/folder-structure.png)
 
