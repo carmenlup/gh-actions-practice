@@ -19,12 +19,16 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y grep sed
+          
+      # Step 3: Make the script executable
+      - name: Make update-adr-log.sh executable
+        run: chmod +x .github/scripts/update-adr-log.sh
 
-      # Step 3: Execute the bash script
+      # Step 4: Execute the bash script
       - name: Run update-adr-log script
         run: .github/scripts/update-adr-log.sh
 
-      # Step 4: Commit and push changes
+      # Step 5: Commit and push changes
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
