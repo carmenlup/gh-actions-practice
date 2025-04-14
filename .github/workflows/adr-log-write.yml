@@ -32,23 +32,22 @@ jobs:
 
             # Process the files in sorted order
             echo "$sorted_files" | while IFS='|' read -r date file; do
-              # Extract the ADR number (first 4 characters of the filename)
-              adr_number=$(basename "$file" .md | cut -c1-4)
+            # Extract the ADR number (first 4 characters of the filename)
+            adr_number=$(basename "$file" .md | cut -c1-4)
 
-              # Generate the relative file path for the link
-              file_link=$(basename "$file")
+            # Generate the relative file path for the link
+            file_link=$(basename "$file")
 
-              # Extract content between <!-- start --> and <!-- end -->, prepend ADR number as a link, and append to index.md
-              sed -n '/<!-- log start -->/,/<!-- log end -->/p' "$file" | sed "2s/^/- [ADR-$adr_number](adr\/$file_link) - /" | sed '/<!-- log start -->/d; /<!-- log end -->/d' >> index.md
+            # Extract content between <!-- start --> and <!-- end -->, prepend ADR number as a link, and append to index.md
+            sed -n '/<!-- log start -->/,/<!-- log end -->/p' "$file" | sed "2s/^/- [ADR-$adr_number](adr\/$file_link) - /" | sed '/<!-- log start -->/d; /<!-- log end -->/d' >> index.md
 
-              # Delete content between <!-- start --> and <!-- end --> (inclusive) in the original file
-              sed -i '/<!-- log start -->/,/<!-- log end -->/d' "$file"
+            # Delete content between <!-- start --> and <!-- end --> (inclusive) in the original file
+            sed -i '/<!-- log start -->/,/<!-- log end -->/d' "$file"
             done
 
             # Clean up the temporary file
             rm "$temp_file"
         - name: Update ADR log
-          if: env.status == 'approved' || env.status == 'deprecated'
           run: |
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
