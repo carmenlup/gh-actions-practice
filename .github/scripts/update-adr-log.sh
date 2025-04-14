@@ -7,7 +7,7 @@ temp_file=$(mktemp)
 # Extract the date from each file and store it with the filename
 find adr -type f -name "*.md" | while read -r file; do
   # Skip a specific file (e.g., adr/excluded-file.md)
-  if [[ "$file" == "adr/excluded-file.md" ]]; then
+  if [[ "$file" == "adr/adr-flow-readme.md" ]]; then
     echo "Skipping file: $file"
     continue
   fi
