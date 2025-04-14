@@ -15,6 +15,9 @@ jobs:
 
         - name: Copy content between comments from all Markdown files in adr folder to index.md
           run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            
             > index.md
 
             # Create a temporary file to store filenames and their dates
@@ -47,11 +50,7 @@ jobs:
 
             # Clean up the temporary file
             rm "$temp_file"
-        - name: Update ADR log
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e '[[]*[]].md'
+
             git add index.md
             git commit -m "Update ADR log"
             git push origin main
