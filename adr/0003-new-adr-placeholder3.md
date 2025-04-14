@@ -1,3 +1,28 @@
+<!-- log start -->
+[ADR-0002](adr/0002-new-adr-placeholder2.md) - **Title:** New ADR 444 for testing **<font color="grey"> / </font>** **Status:** ✅ <font color="green">Accepted </font> **<font color="grey"> / </font>** **Date:** 12-Apr-2025
+<!-- log end -->
+# SQL Database recovery
 
-# ADR contet
-this is an exaple of log deprecated
+## Status
+✅ <font color="green">Accepted </font>
+## Context
+What is the issue or problem we are addressing?
+
+## Decision
+What is the change or decision we are proposing?
+
+## Rationale
+Why was this decision made?
+
+## Alternatives
+What other options were considered?
+
+## Risks
+- What are the potential risks of this decision?
+- How will these risks be mitigated
+
+## Consequences
+What are the short-term and long-term implications?
+
+## Links
+Related ADRs, issues, or documentation.
