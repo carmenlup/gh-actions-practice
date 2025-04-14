@@ -14,7 +14,7 @@ for file in $(ls -r adr/*.md); do
   sed -i '/<!-- log start -->/,/<!-- log end -->/d' "$file"
 done
 
-# Ordered by date under adr folders and subfolders
+# Ordered by date
 > index.md
 
 # Create a temporary file to store filenames and their dates
@@ -22,6 +22,11 @@ temp_file=$(mktemp)
 
 # Extract the date from each file and store it with the filename
 find adr -type f -name "*.md" | while read -r file; do
+  # Skip a specific file (e.g., adr/excluded-file.md)
+  if [[ "$file" == "adr/excluded-file.md" ]]; then
+    echo "Skipping file: $file"
+    continue
+  fi
   # Extract the date from the file (assuming the date is in the format `**Date:** DD-MMM-YYYY`)
   date=$(grep -oP '(?<=\*\*Date:\*\* ).*' "$file" | head -n 1)
   echo "$date|$file" >> "$temp_file"
