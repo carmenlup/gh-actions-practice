@@ -60,21 +60,11 @@ Copy and paste the code below and update the log information
 ### For Accepted ADR
 
 ```
-<!-- log start -->
-
-[ADR-replaceWithYourADRNumber](add your adr md file link) - **Title:** Replace with the title of your ADR **<font color="grey"> / </font>** **Status:** ✅ <font color="green">Accepted </font> **<font color="grey"> / </font>** **Date:** [dd-Mon-2025]
-
-<!-- log end -->
 ```
 
 ### For Deprecated ADR
 
 ```
-<!-- log start -->
-
-[ADR-replaceWithYourADRNumber](add your adr md file link) - **Title:** Replace with the title of your ADR**<font color="grey"> / </font>** **Status:** ❗<font color="red">Deprecated</font> **<font color="grey"> / </font>** **Date:** 10-Apr-2025
-
-<!-- log end -->
 ```
 
 **Example of ADR log in PR - before merge in main**
