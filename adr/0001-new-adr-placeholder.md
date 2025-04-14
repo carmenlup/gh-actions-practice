@@ -1,1 +1,5 @@
--> **Title:** New ADR Title 111 <br/> **Status:** ✍️ <font color="orange">Proposed </font><br/> **Date:** 10-Apr-2025
+<!-- log start -->
+**Title:** New ADR 111 for testing **<font color="grey"> / </font>** **Status:** ✍️ <font color="orange">Proposed </font> **<font color="grey"> / </font>** **Date:** 12-Apr-2025
+<!-- log end -->
+
+# ADR content
