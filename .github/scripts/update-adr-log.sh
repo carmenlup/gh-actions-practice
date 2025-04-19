@@ -1,5 +1,5 @@
 # Ordered by date
-> index.md
+# > index.md
 
 # Create a temporary file to store filenames and their dates
 temp_file=$(mktemp)
