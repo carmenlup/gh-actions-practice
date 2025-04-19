@@ -1,3 +1,4 @@
+
 - [ADR-0004](adr/0004-new-adr-placeholder4.md) -
   **Title:** ADR Title **<font color="grey"> / </font>** **Status:** ✅ <font color="green">Accepted </font> **<font color="grey"> / </font>** **Date:** 11-Apr-2025
 - [ADR-0002](adr/0002-new-adr-placeholder2.md) -
