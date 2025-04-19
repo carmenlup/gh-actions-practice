@@ -1,4 +1,3 @@
-
 # SQL Database recovery
 
 ## Status
