@@ -1,8 +1,5 @@
 name: Update ADR Log
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -20,11 +17,33 @@ jobs:
       - name: Install adr-log globally
         run: npm install -g adr-log
 
-      - name: Update ADR log
+      - name: Check if any ADR file is approved or deprecated
+        id: check-status
         run: |
-          git config --global user.name "Carmen Lup"
-          git config --global user.email "carmen.gabriela.lp@gmail.comm"
-          adr-log -d adr -i ./index.md -e template.md
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '^adr/.*\.md$')
+          else
+            echo "No previous commit found. Skipping diff check."
+            CHANGED_FILES=""
+          fi
+          echo "Changed files: $CHANGED_FILES"
+          for FILE in $CHANGED_FILES; do
+            if grep -q '**Status:** ✅ <font color="green">Approved</font>' "$FILE"; then
+              echo "status=approved" >> $GITHUB_ENV
+              break
+            elif grep -q '**Status:** ❗<font color="red">Deprecated</font>' "$FILE"; then
+              echo "status=deprecated" >> $GITHUB_ENV
+              break
+            fi
+          done
+          echo "::set-output name=status::$status"
+
+      - name: Update ADR log
+        if: steps.check-status.outputs.status == 'approved' || steps.check-status.outputs.status == 'deprecated'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          adr-log -d ${{ github.workspace }}/adr -i ${{ github.workspace }}/index.md -e '[[]*[]].md'
           git add index.md
           git commit -m "Update ADR log"
           git push origin main

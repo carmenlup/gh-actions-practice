@@ -1,0 +1,38 @@
+name: ADR log write
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-adr-log:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up the environment (if needed)
+      - name: Set up environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y grep sed
+          
+      # Step 3: Make the script executable
+      - name: Make update-adr-log.sh executable
+        run: chmod +x .github/scripts/update-adr-log.sh
+
+      # Step 4: Execute the bash script
+      - name: Run update-adr-log script
+        run: .github/scripts/update-adr-log.sh
+
+      # Step 5: Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update ADR log"
+          git push origin main
