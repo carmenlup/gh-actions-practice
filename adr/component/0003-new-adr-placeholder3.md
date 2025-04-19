@@ -1,8 +1,3 @@
-<!-- log start -->
-
-**Title:** SQL Database recovery **<font color="grey"> / </font>** **Status:** ✅ <font color="green">Accepted </font> **<font color="grey"> / </font>** **Date:** 09-Apr-2025
-
-<!-- log end -->
 
 # SQL Database recovery
 

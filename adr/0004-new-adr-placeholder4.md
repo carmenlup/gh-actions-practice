@@ -1,8 +1,3 @@
-<!-- log start -->
-
-**Title:** ADR Title **<font color="grey"> / </font>** **Status:** ✅ <font color="green">Accepted </font> **<font color="grey"> / </font>** **Date:** 11-Apr-2025
-
-<!-- log end -->
 
 # ADR Title
 
